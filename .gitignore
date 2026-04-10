@@ -1,0 +1,41 @@
+# Build output
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+.vs/
+
+# Rider / JetBrains
+.idea/
+*.DotSettings.user
+
+# VS Code
+.vscode/
+
+# Runtime data
+*.db
+*.db-shm
+*.db-wal
+
+# Publish output
+publish/
+out/
+
+# NuGet
+*.nupkg
+*.snupkg
+project.lock.json
+packages/
+
+# .NET user secrets
+secrets.json
+
+# Environment overrides
+appsettings.Local.json
+appsettings.*.local.json
+
+# Logs
+*.log
+logs/
