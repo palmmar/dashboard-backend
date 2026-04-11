@@ -14,10 +14,8 @@ obj/
 # VS Code
 .vscode/
 
-# Runtime data
-*.db
-*.db-shm
-*.db-wal
+# Docker
+.env
 
 # Publish output
 publish/
