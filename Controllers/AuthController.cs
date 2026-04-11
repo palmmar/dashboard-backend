@@ -93,7 +93,7 @@ public class AuthController : ControllerBase
         var cookieOptions = new CookieOptions
         {
             HttpOnly = true,
-            Secure = true,
+            Secure = Request.IsHttps,
             SameSite = SameSiteMode.Lax,
             Expires = DateTimeOffset.UtcNow.AddMinutes(60),
         };

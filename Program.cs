@@ -14,7 +14,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // ---- Identity ----
-builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
+builder.Services.AddIdentityCore<AppUser>(options =>
 {
     options.Password.RequireDigit = true;
     options.Password.RequiredLength = 8;
@@ -22,15 +22,13 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
     options.Password.RequireUppercase = false;
     options.User.RequireUniqueEmail = true;
 })
+.AddRoles<IdentityRole>()
+.AddSignInManager()
 .AddEntityFrameworkStores<AppDbContext>()
 .AddDefaultTokenProviders();
 
 // ---- JWT Authentication ----
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-})
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 .AddJwtBearer(options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
