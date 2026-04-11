@@ -72,6 +72,7 @@ builder.Services.AddCors(options =>
 // ---- Application Services ----
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddHttpClient();
+builder.Services.AddHealthChecks();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -85,6 +86,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.MapHealthChecks("/health");
 app.UseCors("FrontendDev");     // Must be before UseAuthentication
 app.UseAuthentication();
 app.UseAuthorization();
