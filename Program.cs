@@ -71,6 +71,7 @@ builder.Services.AddCors(options =>
 
 // ---- Application Services ----
 builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddHttpClient();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
