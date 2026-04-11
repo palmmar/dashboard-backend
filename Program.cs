@@ -58,11 +58,15 @@ builder.Services.AddAuthentication(options =>
 });
 
 // ---- CORS ----
+var allowedOrigins = builder.Configuration["AllowedOrigin"] is { Length: > 0 } origin
+    ? [origin]
+    : new[] { "http://localhost:5173" };
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("FrontendDev", policy =>
     {
-        policy.WithOrigins("http://localhost:5173")
+        policy.WithOrigins(allowedOrigins)
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials(); // Required for cookies to be sent cross-origin

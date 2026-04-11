@@ -93,7 +93,7 @@ public class AuthController : ControllerBase
         var cookieOptions = new CookieOptions
         {
             HttpOnly = true,
-            Secure = false,        // Set to true in production (requires HTTPS)
+            Secure = true,
             SameSite = SameSiteMode.Lax,
             Expires = DateTimeOffset.UtcNow.AddMinutes(60),
         };
